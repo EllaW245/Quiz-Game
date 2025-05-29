@@ -1,0 +1,63 @@
+'''Use GUI to create four buttons that say different things when clicked on
+   Ella Wilce
+   May 23 2025'''
+
+# import tkinter
+from tkinter import *
+
+#create root window
+root = Tk()
+root.title("What button got clicked!")
+root.geometry("400x300")
+
+#add label to root window
+label = Label(root, text = "Click a button: ")
+label.grid()
+
+# Add place to enter answer (Entry Field)
+year_answer = Entry(root, width=10)
+year_answer.grid(column =1, row =0)
+
+
+# Function to display text when button is pressed
+def clicked():
+    label.configure(text = "I just got clicked")
+
+# create button with green text
+green_button = Button(root, text = "Click the Green Button" 
+                      , fg = "green", command = clicked)
+
+# set button location
+green_button.grid(column = 2, row = 0)
+
+
+
+# Function for three more buttons: red, blue, yellow
+def red_clicked():
+    label.configure(text = "red just got clicked")
+red_button = Button(root, text = "Click the Red Button" 
+                      , fg = "Red", command = red_clicked)
+red_button.grid(column = 2, row = 1)
+
+def blue_clicked():
+    label.configure(text = "blue just got clicked")
+blue_button = Button(root, text = "Click the Blue Button" 
+                      , fg = "Blue", command = blue_clicked)
+blue_button.grid(column = 2, row = 2)
+
+def yellow_clicked():
+    label.configure(text = "yellow just got clicked")
+yellow_button = Button(root, text = "Click the Yellow Button" 
+                      , fg = "Yellow", command = yellow_clicked)
+yellow_button.grid(column = 2, row = 3)
+
+
+
+
+# Execute Tkinter
+root.mainloop()
+
+
+
+
+

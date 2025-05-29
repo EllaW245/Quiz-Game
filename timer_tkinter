@@ -1,0 +1,46 @@
+'''make a background change colour after 5 seconds based o nwhat colour button was pressed.
+    Ella Wilce
+    23 May 2025'''
+
+
+
+from tkinter import *
+
+
+
+# creating root window
+root = Tk()
+root.geometry("300x250")
+root.title("Background Colour Change")
+
+#set initial background to blue
+root.configure(bg='lightblue')
+
+#declare variables
+second = 5
+label = Label(root, text = "Click a button: ")
+label.grid()
+
+#declare functions
+def red_clicked():
+    label.configure(text = "WRONG", bg = "red")
+    root.configure(bg = "red")
+def green_clicked():
+    label.configure(text = "RIGHT", bg = "green")
+    root.configure(bg = "green")
+def notclicked():
+    root.configure(bg = 'purple')
+    label.configure(text = "too slow!!!")
+
+red_button = Button(root, text  = "Red Button", fg = "red", command = red_clicked)
+red_button.grid(column = 2, row = 2)
+
+
+green_button = Button(root, text  = "Green Button" , fg = "Green", command = green_clicked)
+green_button.grid(column = 4, row = 2)
+   
+root.after(2000, notclicked)
+
+
+
+root.mainloop()
