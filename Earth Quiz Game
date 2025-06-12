@@ -25,15 +25,39 @@ q_energy = PhotoImage(file = r"C:\Users\wilcee\Downloads\Question Screen renewab
 q_bio = PhotoImage(file = r"C:\Users\wilcee\Downloads\Question Screen biodiversity(1200 x 800 px).png")
 q_sealife = PhotoImage(file = r"C:\Users\wilcee\Downloads\Question Screen sea pollution(1200 x 800 px).png")
 q_water = PhotoImage(file = r"C:\Users\wilcee\Downloads\Question Screen groundwater(1200 x 800 px).png")
+right_bg = PhotoImage(file = r"C:\Users\wilcee\Downloads\Correct .png")
+wrong_bg = PhotoImage(file = r"C:\Users\wilcee\Downloads\Wrong .png")
+#List of all questions. Chose a random one eackh time. Do not repeat questions
 
+import random
+
+questions_list = ["question_2","question_3"]
+'''"question_4","question_5","question_6","question_7","question_8","question_9","question_10",'''
+asked = []
+'''while 
+while 
+    next_question = random.choice(questions_list)'''
 
 # add right screen and wrong screen
 
 def right_answer():
-    root.configure(bg = "green")
+    bg_image = Label(root, image = right_bg)
+    bg_image.place(relheight = 1, relwidth = 1)
+    #if random.choice(questions_list) not in asked:
+    next_question = random.choice(questions_list)
+
+    continue_button = Button(root, text = "Next Question", font = ("Hobo std",30,'bold')
+                      , bg = "white", command = next_question)
+    continue_button.configure(height = 1, width = 20)
+    continue_button.place(x=200, y = 600)
 
 def wrong_answer():
-    root.configure(bg = "red")
+    bg_image = Label(root, image = wrong_bg)
+    bg_image.place(relheight = 1, relwidth = 1)
+    continue_button = Button(root, text = "Next Question", font = ("Hobo std",30,'bold')
+                      , bg = "white", command = next_question)
+    continue_button.configure(height = 1, width = 20)
+    continue_button.place(x=200, y = 600)
 
 #after play has been clicked show rules and continue button to start the quiz
 def play_clicked():
@@ -46,6 +70,7 @@ def play_clicked():
 
 
 def continue_clicked():
+    # Question 1
     bg_image = Label(root, image = q_ozone)
     bg_image.place(relheight = 1, relwidth = 1)
     right_ozone = Button(root, text = "Industrial pollutants\n like CFCs", font = ("Hobo std",20,'normal')
@@ -64,6 +89,18 @@ def continue_clicked():
                       , bg = "white", command = wrong_answer)
     wrong_ozone3.configure(height = 3, width = 20,)
     wrong_ozone3.place(x = 420, y = 500)
+
+def question_2():
+    bg_image = Label(root, image = q_g_gas)
+    bg_image.place(relheight = 1, relwidth = 1)
+
+def question_3():
+    bg_image = Label(root, image = q_algae)
+    bg_image.place(relheight = 1, relwidth = 1)
+
+
+
+
 
     
 # rules button on homescreen
