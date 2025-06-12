@@ -1,0 +1,86 @@
+''''''
+
+# Create the homescreen that displays the name of the game, a button to go to the rules, a button to select a category, and a button to play now
+
+
+from tkinter import *
+
+
+# create root window and homescreen
+root = Tk()
+root.geometry("1200x800")
+root.title("Background Colour Change")
+home = PhotoImage(file=r"C:\Users\wilcee\Downloads\Earth Homescreen (1200 x 800 px) (1).png")
+bg_image = Label(root, image = home)
+bg_image.place(relheight = 1, relwidth = 1)
+rules_image= PhotoImage(file=r"C:\Users\wilcee\Downloads\RULES.png")
+randimage = PhotoImage(file=r"C:\Users\wilcee\Downloads\Yellow Abstract background(600 x 600 px).png")
+q_ozone = PhotoImage(file = r"C:\Users\wilcee\Downloads\Question Screen ozone(1200 x 800 px).png")
+q_g_gas = PhotoImage(file = r"C:\Users\wilcee\Downloads\Question Screen g-gas(1200 x 800 px).png")
+q_algae = PhotoImage(file = r"C:\Users\wilcee\Downloads\Question Screen algae(1200 x 800 px).png")
+q_soil = PhotoImage(file = r"C:\Users\wilcee\Downloads\Question Screen soil erosion(1200 x 800 px).png")
+q_forest = PhotoImage(file = r"C:\Users\wilcee\Downloads\Question Screen deforestation(1200 x 800 px).png")
+q_develop = PhotoImage(file = r"C:\Users\wilcee\Downloads\Question Screen sustainable development(1200 x 800 px).png")
+q_energy = PhotoImage(file = r"C:\Users\wilcee\Downloads\Question Screen renewable energy(1200 x 800 px).png")
+q_bio = PhotoImage(file = r"C:\Users\wilcee\Downloads\Question Screen biodiversity(1200 x 800 px).png")
+q_sealife = PhotoImage(file = r"C:\Users\wilcee\Downloads\Question Screen sea pollution(1200 x 800 px).png")
+q_water = PhotoImage(file = r"C:\Users\wilcee\Downloads\Question Screen groundwater(1200 x 800 px).png")
+
+
+# add right screen and wrong screen
+
+def right_answer():
+    root.configure(bg = "green")
+
+def wrong_answer():
+    root.configure(bg = "red")
+
+#after play has been clicked show rules and continue button to start the quiz
+def play_clicked():
+    bg_image = Label(root, image = rules_image)
+    bg_image.place(relheight = 1, relwidth = 1)
+    continue_button = Button(root, text = "Continue to Quiz", font = ("Hobo std",30,'bold')
+                      , bg = "white", command = continue_clicked)
+    continue_button.configure(height = 1, width = 20)
+    continue_button.place(x=200, y = 600)
+
+
+def continue_clicked():
+    bg_image = Label(root, image = q_ozone)
+    bg_image.place(relheight = 1, relwidth = 1)
+    right_ozone = Button(root, text = "Industrial pollutants\n like CFCs", font = ("Hobo std",20,'normal')
+                      , bg = "white", command = right_answer)
+    right_ozone.configure(height = 3, width = 20,)
+    right_ozone.place(x = 80, y = 300)
+    wrong_ozone1 = Button(root, text = "Increased \n solar radiation", font = ("Hobo std",20,'normal')
+                      , bg = "white", command = wrong_answer)
+    wrong_ozone1.configure(height = 3, width = 20,)
+    wrong_ozone1.place(x = 80, y = 500)
+    wrong_ozone2 = Button(root, text = "Natural variations \n in atmospheric gases", font = ("Hobo std",20,'normal')
+                      , bg = "white", command = wrong_answer)
+    wrong_ozone2.configure(height = 3, width = 20,)
+    wrong_ozone2.place(x = 420, y = 300)
+    wrong_ozone3 = Button(root, text = "Deforestation", font = ("Hobo std",20,'normal')
+                      , bg = "white", command = wrong_answer)
+    wrong_ozone3.configure(height = 3, width = 20,)
+    wrong_ozone3.place(x = 420, y = 500)
+
+    
+# rules button on homescreen
+play_button = Button(root, text = "Play Now", font = ("Hobo std",30,'bold')
+                      , bg = "lightgreen", command = play_clicked)
+play_button.configure(height = 1, width = 8,)
+play_button.place(x = 500, y = 400)
+
+
+
+
+
+
+
+
+
+
+
+root.mainloop()
+
