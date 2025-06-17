@@ -1,0 +1,41 @@
+'''import random
+
+def question1():
+    print("question 1 called")
+
+def question2():
+    print("question 2 called")
+
+def question3():
+    print("question 3 called")
+
+question_list = [question1, question2, question3]
+asked = []
+
+chosen_function = random.choice(question_list)
+if chosen_function not in asked:
+    chosen_function()
+    asked.append(chosen_function)'''
+
+#quiz with questions in succession
+questions = ('ozone?','g_gas?', 'algae?', 'soil?', )
+options = (("A right", "B", "C", "D"),
+           ("A", "B right", "C", "D"),
+           ("A", "B", "C right", "D"),
+           ("A", "B", "C", "D right"))
+answers = ("A", "B", "C", "D")
+guesses = []
+question_num = 0
+right_answers = 0
+for question in questions:
+    print("--------------------------")
+    print(question)
+    for option in options[question_num]:
+        print(option)
+    guess = input("pick the answer (A, B, C, D):  ").upper()
+    if guess == answers[question_num]:
+        print("correct")
+        right_answers += 1
+    else:
+        print("wrong")
+    question_num += 1
