@@ -31,10 +31,33 @@ wrong_bg = PhotoImage(file = r"C:\Users\wilcee\Downloads\Wrong .png")
 question_num = 1
 
 import random
+'''#quiz with questions in succession
+questions = ('ozone?','g_gas?', 'algae?', 'soil?', )
+options = (("A right", "B", "C", "D"),
+           ("A", "B right", "C", "D"),
+           ("A", "B", "C right", "D"),
+           ("A", "B", "C", "D right"))
+answers = ("A", "B", "C", "D")
+guesses = []
+question_num = 0
+right_answers = 0
+for question in questions:
+    print("--------------------------")
+    print(question)
+    for option in options[question_num]:
+        print(option)
+    guess = input("pick the answer (A, B, C, D):  ").upper()
+    if guess == answers[question_num]:
+        print("correct")
+        right_answers += 1
+    else:
+        print("wrong")
+    question_num += 1'''
 
-questions_list = ["question_2","question_3"]
-'''"question_4","question_5","question_6","question_7","question_8","question_9","question_10",'''
+questions_list = ["question_2","question_3","question_4","question_5","question_6","question_7","question_8","question_9","question_10"]
 asked = []
+right_answers = 0
+question_num = 1
 
 def question_2():
     question_num = 2
@@ -46,25 +69,31 @@ def question_3():
     bg_image = Label(root, image = q_algae)
     bg_image.place(relheight = 1, relwidth = 1)
 
+def question_4():
+    question_num = 4
+    bg_image = Label(root, image = q_soil)
+    bg_image.place(relheight = 1, relwidth = 1)
+
 # add right screen and wrong screen
 
 def right_answer():
     bg_image = Label(root, image = right_bg)
     bg_image.place(relheight = 1, relwidth = 1)
     #if random.choice(questions_list) not in asked:
-    next_question = random.choice(questions_list)
-
+    #next_question = random.choice(questions_list)
+    question_num += 1 
+    right_answers += 1
     continue_button = Button(root, text = "Next Question", font = ("Hobo std",30,'bold')
-                      , bg = "white", command = question_2)
+                      , bg = "white", command = question_num)
     continue_button.configure(height = 1, width = 20)
     continue_button.place(x=200, y = 600)
 
 def wrong_answer():
     bg_image = Label(root, image = wrong_bg)
     bg_image.place(relheight = 1, relwidth = 1)
-    next_question = random.choice(questions_list)
+    question_num +=1
     continue_button = Button(root, text = "Next Question", font = ("Hobo std",30,'bold')
-                      , bg = "white", command = question_num += 1)
+                      , bg = "white", command = question_num)
     continue_button.configure(height = 1, width = 20)
     continue_button.place(x=200, y = 600)
 
@@ -84,7 +113,11 @@ def play_clicked():
 
 
 def continue_clicked():
+    for question in questions_list:
+        question()
+
     # Question 1
+def question_1():
     bg_image = Label(root, image = q_ozone)
     bg_image.place(relheight = 1, relwidth = 1)
     right_ozone = Button(root, text = "Industrial pollutants\n like CFCs", font = ("Hobo std",20,'normal')

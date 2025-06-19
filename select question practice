@@ -15,7 +15,7 @@ asked = []
 chosen_function = random.choice(question_list)
 if chosen_function not in asked:
     chosen_function()
-    asked.append(chosen_function)'''
+    asked.append(chosen_function)
 
 #quiz with questions in succession
 questions = ('ozone?','g_gas?', 'algae?', 'soil?', )
@@ -38,4 +38,63 @@ for question in questions:
         right_answers += 1
     else:
         print("wrong")
-    question_num += 1
+    question_num += 1'''
+
+    
+"""
+    Creates and configures a Tkinter button.
+
+    Args:
+        parent: The parent widget (e.g., the main window).
+        text: The text to display on the button.
+        bg_color: The background color of the button.
+        width: The width of the button.
+        height: The height of the button.
+        command_func: The function to be called when the button is clicked.
+    """
+
+from tkinter import *
+root = Tk()
+root.title("Button function practice")
+root.geometry("1200x800")
+
+def answer_options(root, text, bg_colour, command_func):
+    question_button = Button(
+        root,
+        text=text,
+        bg_colour = "white",
+        width=20,
+        font = ("Hobo std",20,'normal'),
+        height=3,
+        command=command_func
+    )
+    return question_button
+
+right_bg = PhotoImage(file = r"C:\Users\wilcee\Downloads\Correct .png")
+wrong_bg = PhotoImage(file = r"C:\Users\wilcee\Downloads\Wrong .png")
+def right_answer():
+    bg_image = Label(root, image = right_bg)
+    bg_image.place(relheight = 1, relwidth = 1)
+def wrong_answer():
+    bg_image = Label(root, image = wrong_bg)
+    bg_image.place(relheight = 1, relwidth = 1)
+
+
+
+
+# Create and configure the five buttons using the create_button function
+ozone1 = answer_options(root, "Industrial pollutants \n like CFCs", right_answer)
+ozone2 = answer_options(root, "Increased \n solar radiation", wrong_answer)
+ozone3 = answer_options(root, "Natural variations \n in atmospheric gases", wrong_answer)
+ozone4 = answer_options(root, "Deforestation", wrong_answer)
+
+
+# Pack the buttons to display them in the window
+ozone1.pack(pady=5)
+ozone2.pack(pady=5)
+ozone3.pack(pady=5)
+ozone4.pack(pady=5)
+
+
+# Start the Tkinter event loop
+root.mainloop()
