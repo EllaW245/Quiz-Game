@@ -58,11 +58,11 @@ root = Tk()
 root.title("Button function practice")
 root.geometry("1200x800")
 
-def answer_options(root, text, bg_colour, command_func):
+def answer_options(root, text, command_func):
     question_button = Button(
         root,
         text=text,
-        bg_colour = "white",
+        bg = "white",
         width=20,
         font = ("Hobo std",20,'normal'),
         height=3,
@@ -90,10 +90,70 @@ ozone4 = answer_options(root, "Deforestation", wrong_answer)
 
 
 # Pack the buttons to display them in the window
-ozone1.pack(pady=5)
-ozone2.pack(pady=5)
-ozone3.pack(pady=5)
-ozone4.pack(pady=5)
+ozone1.place(x= 80, y=300 )
+ozone2.place(x= 80, y=500)
+ozone3.place(x= 420, y=300)
+ozone4.place(x=420, y=500)
+
+g_gas1 = answer_options(root,"Oxygen", wrong_answer)
+g_gas2 = answer_options(root, "Nitrogen", wrong_answer)
+g_gas3 = answer_options(root, "Carbon Dioxide", right_answer)
+g_gas4 = answer_options(root, "Helium", wrong_answer)
+
+g_gas1.place(x= 80, y=300 )
+g_gas2.place(x= 80, y=500)
+g_gas3.place(x= 420, y=300)
+g_gas4.place(x=420, y=500)
+
+algae1 = answer_options(root, "Eutrophication", right_answer)
+algae2 = answer_options(root, "Hypernutrification", wrong_answer)
+algae3 = answer_options(root, "Acidification", wrong_answer)
+algae4 = answer_options(root, "Desertification", wrong_answer)
+
+algae1.place(x= 80, y=300 )
+algae2.place(x= 80, y=500)
+algae3.place(x= 420, y=300)
+algae4.place(x=420, y=500)
+
+soil1 = answer_options(root, "Afforestation", wrong_answer)
+soil2 = answer_options(root, "Overgrazing", right_answer)
+soil3 = answer_options(root, "Excess water", wrong_answer)
+soil4 = answer_options(root, "Crop Rotation", wrong_answer)
+
+soil1.place(x= 80, y=300 )
+soil2.place(x= 80, y=500)
+soil3.place(x= 420, y=300)
+soil4.place(x=420, y=500)
+
+forest1 = answer_options(root, "Increased Carbon \n Sequestration", wrong_answer)
+forest2 = answer_options(root, "Increased Biodiversity", wrong_answer)
+forest3 = answer_options(root, "Increased Water \n Cycle disruptions", right_answer)
+forest4 = answer_options(root, "Increased greenhouse \n gas emissions", wrong_answer)
+
+forest1.place(x= 80, y=300 )
+forest2.place(x= 80, y=500)
+forest3.place(x= 420, y=300)
+forest4.place(x=420, y=500)
+
+develop1 = answer_options(root,"Meeting the needs of the \n present without compromising \n future generations", right_answer )
+develop2 = answer_options(root, " Focusing solely on \n economic growth", wrong_answer)
+develop3 = answer_options(root, "Ignoring \n environmental concerns" ,wrong_answer)
+develop4 = answer_options(root, " Prioritizing short-term \n gains over long-term \n sustainability", wrong_answer)
+
+develop1.place(x= 80, y=300 )
+develop2.place(x= 80, y=500)
+develop3.place(x= 420, y=300)
+develop4.place(x=420, y=500)
+
+
+
+
+
+
+
+
+
+
 
 
 # Start the Tkinter event loop

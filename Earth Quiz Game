@@ -54,37 +54,20 @@ for question in questions:
         print("wrong")
     question_num += 1'''
 
-questions_list = ["question_2","question_3","question_4","question_5","question_6","question_7","question_8","question_9","question_10"]
+questions_list = ["question_1", "question_2","question_3","question_4","question_5", "question_6"]
 asked = []
 right_answers = 0
 question_num = 1
-
-def question_2():
-    question_num = 2
-    bg_image = Label(root, image = q_g_gas)
-    bg_image.place(relheight = 1, relwidth = 1)
-
-def question_3():
-    question_num = 3
-    bg_image = Label(root, image = q_algae)
-    bg_image.place(relheight = 1, relwidth = 1)
-
-def question_4():
-    question_num = 4
-    bg_image = Label(root, image = q_soil)
-    bg_image.place(relheight = 1, relwidth = 1)
 
 # add right screen and wrong screen
 
 def right_answer():
     bg_image = Label(root, image = right_bg)
     bg_image.place(relheight = 1, relwidth = 1)
-    #if random.choice(questions_list) not in asked:
-    #next_question = random.choice(questions_list)
     question_num += 1 
     right_answers += 1
     continue_button = Button(root, text = "Next Question", font = ("Hobo std",30,'bold')
-                      , bg = "white", command = question_num)
+                      , bg = "white", command = next_question)
     continue_button.configure(height = 1, width = 20)
     continue_button.place(x=200, y = 600)
 
@@ -93,57 +76,120 @@ def wrong_answer():
     bg_image.place(relheight = 1, relwidth = 1)
     question_num +=1
     continue_button = Button(root, text = "Next Question", font = ("Hobo std",30,'bold')
-                      , bg = "white", command = question_num)
+                      , bg = "white", command = next_question)
     continue_button.configure(height = 1, width = 20)
     continue_button.place(x=200, y = 600)
 
-'''def_next_question():
-    if question_2 not in asked:
-        question_2
-    elif question_3 not in asked:
-        question_3'''
+
 #after play has been clicked show rules and continue button to start the quiz
 def play_clicked():
     bg_image = Label(root, image = rules_image)
     bg_image.place(relheight = 1, relwidth = 1)
     continue_button = Button(root, text = "Continue to Quiz", font = ("Hobo std",30,'bold')
-                      , bg = "white", command = continue_clicked)
+                      , bg = "white", command = question_1)
     continue_button.configure(height = 1, width = 20)
     continue_button.place(x=200, y = 600)
 
-
-def continue_clicked():
+# after right or wrong screen is clicked move onto the next question
+def next_question():
     for question in questions_list:
-        question()
+        question[question_num]
 
-    # Question 1
+def answer_options(root, text, command_func):
+    question_button = Button(
+        root,
+        text=text,
+        bg = "white",
+        width=20,
+        font = ("Hobo std",20,'normal'),
+        height=3,
+        command=command_func
+    )
+    return question_button
+
+
+
+
+
 def question_1():
     bg_image = Label(root, image = q_ozone)
     bg_image.place(relheight = 1, relwidth = 1)
-    right_ozone = Button(root, text = "Industrial pollutants\n like CFCs", font = ("Hobo std",20,'normal')
-                      , bg = "white", command = right_answer)
-    right_ozone.configure(height = 3, width = 20,)
-    right_ozone.place(x = 80, y = 300)
-    wrong_ozone1 = Button(root, text = "Increased \n solar radiation", font = ("Hobo std",20,'normal')
-                      , bg = "white", command = wrong_answer)
-    wrong_ozone1.configure(height = 3, width = 20,)
-    wrong_ozone1.place(x = 80, y = 500)
-    wrong_ozone2 = Button(root, text = "Natural variations \n in atmospheric gases", font = ("Hobo std",20,'normal')
-                      , bg = "white", command = wrong_answer)
-    wrong_ozone2.configure(height = 3, width = 20,)
-    wrong_ozone2.place(x = 420, y = 300)
-    wrong_ozone3 = Button(root, text = "Deforestation", font = ("Hobo std",20,'normal')
-                      , bg = "white", command = wrong_answer)
-    wrong_ozone3.configure(height = 3, width = 20,)
-    wrong_ozone3.place(x = 420, y = 500)
+    ozone1 = answer_options(root, "Industrial pollutants \n like CFCs", right_answer)
+    ozone2 = answer_options(root, "Increased \n solar radiation", wrong_answer)
+    ozone3 = answer_options(root, "Natural variations \n in atmospheric gases", wrong_answer)
+    ozone4 = answer_options(root, "Deforestation", wrong_answer)
 
-'''def question_2():
+    ozone1.place(x= 80, y=300 )
+    ozone2.place(x= 80, y=500)
+    ozone3.place(x= 420, y=300)
+    ozone4.place(x=420, y=500)
+
+def question_2():
     bg_image = Label(root, image = q_g_gas)
     bg_image.place(relheight = 1, relwidth = 1)
+    g_gas1 = answer_options(root,"Oxygen", wrong_answer)
+    g_gas2 = answer_options(root, "Nitrogen", wrong_answer)
+    g_gas3 = answer_options(root, "Carbon Dioxide", right_answer)
+    g_gas4 = answer_options(root, "Helium", wrong_answer)
+
+    g_gas1.place(x= 80, y=300 )
+    g_gas2.place(x= 80, y=500)
+    g_gas3.place(x= 420, y=300)
+    g_gas4.place(x=420, y=500)
 
 def question_3():
     bg_image = Label(root, image = q_algae)
-    bg_image.place(relheight = 1, relwidth = 1)'''
+    bg_image.place(relheight = 1, relwidth = 1)
+    algae1 = answer_options(root, "Eutrophication", right_answer)
+    algae2 = answer_options(root, "Hypernutrification", wrong_answer)
+    algae3 = answer_options(root, "Acidification", wrong_answer)
+    algae4 = answer_options(root, "Desertification", wrong_answer)
+
+    algae1.place(x= 80, y=300 )
+    algae2.place(x= 80, y=500)
+    algae3.place(x= 420, y=300)
+    algae4.place(x=420, y=500)
+
+def question_4():
+    bg_image = Label(root, image = q_soil)
+    bg_image.place(relheight = 1, relwidth = 1)
+    soil1 = answer_options(root, "Afforestation", wrong_answer)
+    soil2 = answer_options(root, "Overgrazing", right_answer)
+    soil3 = answer_options(root, "Excess water", wrong_answer)
+    soil4 = answer_options(root, "Crop Rotation", wrong_answer)
+
+    soil1.place(x= 80, y=300 )
+    soil2.place(x= 80, y=500)
+    soil3.place(x= 420, y=300)
+    soil4.place(x=420, y=500)
+
+def question_5():
+    bg_image = Label(root, image = q_forest)
+    bg_image.place(relheight = 1, relwidth = 1)
+    forest1 = answer_options(root, "Increased Carbon \n Sequestration", wrong_answer)
+    forest2 = answer_options(root, "Increased Biodiversity", wrong_answer)
+    forest3 = answer_options(root, "Increased Water \n Cycle disruptions", right_answer)
+    forest4 = answer_options(root, "Increased greenhouse \n gas emissions", wrong_answer)
+
+    forest1.place(x= 80, y=300 )
+    forest2.place(x= 80, y=500)
+    forest3.place(x= 420, y=300)
+    forest4.place(x=420, y=500)
+    
+
+def question_6():
+    bg_image = Label(root, image = q_develop)
+    bg_image.place(relheight = 1, relwidth = 1)
+    develop1 = answer_options(root,"Meeting the needs of the \n present without compromising \n future generations", right_answer )
+    develop2 = answer_options(root, " Focusing solely on \n economic growth", wrong_answer)
+    develop3 = answer_options(root, "Ignoring \n environmental concerns" ,wrong_answer)
+    develop4 = answer_options(root, " Prioritizing short-term \n gains over long-term \n sustainability", wrong_answer)
+
+    develop1.place(x= 80, y=300 )
+    develop2.place(x= 80, y=500)
+    develop3.place(x= 420, y=300)
+    develop4.place(x=420, y=500)
+
 
 
 
