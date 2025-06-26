@@ -128,13 +128,72 @@ def question_6():
     develop3.place(x= 420, y=300)
     develop4.place(x=420, y=500)
 
+def question_7():
+    bg_image = Label(root, image = q_energy)
+    bg_image.place(relheight = 1, relwidth = 1)
+    energy1 = answer_options(root, "coal", wrong_answer)
+    energy2 = answer_options(root, "oil", wrong_answer)
+    energy3 = answer_options(root, "solar", right_answer)
+    energy4 = answer_options(root, "natural gas", wrong_answer)
+
+    energy1.place(x= 80, y=300 )
+    energy2.place(x= 80, y=500)
+    energy3.place(x= 420, y=300)
+    energy4.place(x=420, y=500)
+
+def question_8():
+    bg_image = Label(root, image = q_bio)
+    bg_image.place(relheight = 1, relwidth = 1)
+    bio1 = answer_options(root, "species extinction", right_answer)
+    bio2 = answer_options(root, "genetic diversity", wrong_answer)
+    bio3 = answer_options(root, "habitat fragmentation", wrong_answer)
+    bio4 = answer_options(root, "natural selection", wrong_answer)
+
+    bio1.place(x= 80, y=300 )
+    bio2.place(x= 80, y=500)
+    bio3.place(x= 420, y=300)
+    bio4.place(x=420, y=500)
+
+def question_9():
+    bg_image = Label(root, image = q_sealife)
+    bg_image.place(relheight = 1, relwidth = 1)
+    sealife1 = answer_options(root, " Increased oxygen \n levels", wrong_answer)
+    sealife2 = answer_options(root, " Reduced plastic waste", wrong_answer)
+    sealife3 = answer_options(root, " Increased marine \n bird populations", wrong_answer)
+    sealife4 = answer_options(root, "  Increased ingestion \n and entanglement", wrong_answer)
+
+    sealife1.place(x= 80, y=300 )
+    sealife2.place(x= 80, y=500)
+    sealife3.place(x= 420, y=300)
+    sealife4.place(x=420, y=500)
+
+
+
+def question_10():
+    bg_image = Label(root, image = q_water)
+    bg_image.place(relheight = 1, relwidth = 1)
+    water1 = answer_options(root, "Runoff", wrong_answer)
+    water2 = answer_options(root, "Evaporation", wrong_answer)
+    water3 = answer_options(root, "infiltration", right_answer)
+    water4 = answer_options(root, "Transpiration", wrong_answer)
+
+    water1.place(x= 80, y=300 )
+    water2.place(x= 80, y=500)
+    water3.place(x= 420, y=300)
+    water4.place(x=420, y=500)
+
+
+
+
 #create a list of all the questions. every time 
-questions_list = [question_1, question_2, question_3, question_4, question_5, question_6]
+questions_list = [question_1, question_2, question_3, question_4, question_5, question_6, question_7, question_8, question_9, question_10]
 asked = []
 right_answers = 0
 question_num = 1
 
 # add right screen and wrong screen
+
+
 
 def right_answer():
     bg_image = Label(root, image = right_bg)
@@ -144,17 +203,23 @@ def right_answer():
     global right_answers
     right_answers += 1
     continue_button = Button(root, text = "Next Question", font = ("Hobo std",30,'bold')
-                      , bg = "white", command = question_2)
+                      , bg = "white", finish)
+                                      
     continue_button.configure(height = 1, width = 20)
     continue_button.place(x=200, y = 600)
 
+def finish():
+    if question_num < len(questions_list):
+        right_answer.command = questions_list[question_num]
+    else:
+        play_clicked
 def wrong_answer():
     bg_image = Label(root, image = wrong_bg)
     bg_image.place(relheight = 1, relwidth = 1)
     global question_num
     question_num +=1
     continue_button = Button(root, text = "Next Question", font = ("Hobo std",30,'bold')
-                      , bg = "white", command = questions_list[1])
+                      , bg = "white", command = questions_list[question_num])
     continue_button.configure(height = 1, width = 20)
     continue_button.place(x=200, y = 600)
 
