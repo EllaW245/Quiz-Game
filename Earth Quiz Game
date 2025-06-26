@@ -191,7 +191,7 @@ def question_10():
 questions_list = [question_1, question_2, question_3, question_4, question_5, question_6, question_7, question_8, question_9, question_10]
 asked = []
 right_answers = 0
-question_num = 1
+question_num = 0
 
 # add right screen and wrong screen
 #len(questions_list)
