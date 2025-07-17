@@ -51,6 +51,12 @@ def answer_options(root, text, command_func):
         command=command_func)
     return question_button
 
+#create a list of all the questions. every time 
+
+
+
+
+
 def question_1():
     bg_image = Label(root, image = q_ozone)
     bg_image.place(relheight = 1, relwidth = 1)
@@ -174,20 +180,16 @@ def question_9():
 def question_10():
     bg_image = Label(root, image = q_water)
     bg_image.place(relheight = 1, relwidth = 1)
-    water1 = answer_options(root, "Runoff", wrong_answer)
-    water2 = answer_options(root, "Evaporation", wrong_answer)
-    water3 = answer_options(root, "infiltration", right_answer)
-    water4 = answer_options(root, "Transpiration", wrong_answer)
+    water1 = answer_options(root, "Runoff", finish)
+    water2 = answer_options(root, "Evaporation", finish)
+    water3 = answer_options(root, "infiltration", finish_right)
+    water4 = answer_options(root, "Transpiration", finish)
 
     water1.place(x= x_pos1, y= y_pos1)
     water2.place(x= x_pos1, y= y_pos2)
     water3.place(x= x_pos2, y= y_pos1)
     water4.place(x=x_pos2, y= y_pos2)
 
-
-
-
-#create a list of all the questions. every time 
 questions_list = [question_1, question_2, question_3, question_4, question_5, question_6, question_7, question_8, question_9, question_10]
 asked = []
 right_answers = 0
@@ -199,19 +201,12 @@ question_num = 0
     if question_num < len(questions_list):
         questions_list[question_num]
     else:
-        play_clicked'''
-
-def finish():
-    try:
+        play_clicked
+def next_question():
+    while question_num <10:
         questions_list[question_num]
-    except(IndexError):
-        bg_image = Label(root, image = home)
-        bg_image.place(relheight = 1, relwidth = 1)
-
-   
- 
-
-
+    bg_image = Label(root, image = home)
+    bg_image.place(relheight = 1, relwidth = 1)'''
 
 def right_answer():
     bg_image = Label(root, image = right_bg)
@@ -221,7 +216,7 @@ def right_answer():
     global right_answers
     right_answers += 1
     continue_button = Button(root, text = "Next Question", font = ("Hobo std",30,'bold')
-                      , bg = "white", command = finish)
+                      , bg = "white", command = questions_list[question_num])
                                       
     continue_button.configure(height = 1, width = 20)
     continue_button.place(x=200, y = 600)
@@ -237,6 +232,47 @@ def wrong_answer():
                       , bg = "white", command = questions_list[question_num])
     continue_button.configure(height = 1, width = 20)
     continue_button.place(x=200, y = 600)
+
+def finish_right():
+    global right_answers 
+    right_answers += 1
+    finish
+    
+    
+def finish():
+    
+    bg_image = Label(root, image = home, text = f'You scored\n {right_answers} out of 10!!!',font = ("Hobo std",70,'bold'), bg = "white" )
+    bg_image.place(relheight = 1, relwidth = 1)
+    bg_image.config(compound = "center")
+    play_button = Button(root, text = "Play Again", font = ("Hobo std",30,'bold')
+                      , bg = "lightgreen", command = play_clicked)
+    play_button.configure(height = 1, width = 8,)
+    play_button.place(x = 500, y = 400)
+    global questions_list, etc
+    questions_list = [question_1, question_2, question_3, question_4, question_5, question_6, question_7, question_8, question_9, question_10]
+    asked = []
+    right_answers = 0
+    question_num = 0
+    
+
+
+
+'''def next_question():
+    try:
+        questions_list[question_num]
+    except(IndexError):
+        bg_image = Label(root, image = home)
+        bg_image.place(relheight = 1, relwidth = 1)'''
+
+
+
+
+
+
+   
+ 
+
+
 
 
 #after play has been clicked show rules and continue button to start the quiz
