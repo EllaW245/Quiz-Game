@@ -1,17 +1,16 @@
-''''''
+'''Quiz Game with 10 multi-choice questions that displays whether the answer was right or wrong
+ and shows total right answers on the final screen, with the option to play again
+                                                                       Ella Wilce July 2025 '''
 
-# Create the homescreen that displays the name of the game, a button to go to the rules, a button to select a category, and a button to play now
-
-
+# Import tkinter to use GUI
 from tkinter import *
-
-
-# create root window and homescreen
+    
+# Create root window 
 root = Tk()
 root.geometry("1200x800")
 root.title("Background Colour Change")
 
-#import images
+# Import background images
 home = PhotoImage(file=r"C:\Users\wilcee\Downloads\Earth Homescreen (1200 x 800 px) (1).png")
 bg_image = Label(root, image = home)
 bg_image.place(relheight = 1, relwidth = 1)
@@ -30,16 +29,14 @@ q_water = PhotoImage(file = r"C:\Users\wilcee\Downloads\Question Screen groundwa
 right_bg = PhotoImage(file = r"C:\Users\wilcee\Downloads\Correct .png")
 wrong_bg = PhotoImage(file = r"C:\Users\wilcee\Downloads\Wrong .png")
 
-
+# Set the values for the x and y positions of the four answer option buttons
 x_pos1 = 80
 x_pos2 = 420
 
 y_pos1 = 400
 y_pos2 = 600
 
-
-
-# Add the questions and background for each question as a function
+# Function to streamline the questions. Establishes everything except root, text, command
 def answer_options(root, text, command_func):
     question_button = Button(
         root,
@@ -51,11 +48,7 @@ def answer_options(root, text, command_func):
         command=command_func)
     return question_button
 
-#create a list of all the questions. every time 
-
-
-
-
+# List of all the questions
 
 def question_1():
     bg_image = Label(root, image = q_ozone)
@@ -122,7 +115,6 @@ def question_5():
     forest3.place(x= x_pos2, y= y_pos1)
     forest4.place(x= x_pos2, y= y_pos2)
     
-
 def question_6():
     bg_image = Label(root, image = q_develop)
     bg_image.place(relheight = 1, relwidth = 1)
@@ -175,8 +167,6 @@ def question_9():
     sealife3.place(x= x_pos2, y= y_pos1)
     sealife4.place(x= x_pos2, y= y_pos2)
 
-
-
 def question_10():
     bg_image = Label(root, image = q_water)
     bg_image.place(relheight = 1, relwidth = 1)
@@ -190,23 +180,7 @@ def question_10():
     water3.place(x= x_pos2, y= y_pos1)
     water4.place(x=x_pos2, y= y_pos2)
 
-questions_list = [question_1, question_2, question_3, question_4, question_5, question_6, question_7, question_8, question_9, question_10]
-asked = []
-right_answers = 0
-question_num = 0
-
-# add right screen and wrong screen
-#len(questions_list)
-''' global question_num, questions_list
-    if question_num < len(questions_list):
-        questions_list[question_num]
-    else:
-        play_clicked
-def next_question():
-    while question_num <10:
-        questions_list[question_num]
-    bg_image = Label(root, image = home)
-    bg_image.place(relheight = 1, relwidth = 1)'''
+# If right answer is selected display a 'right' screen with a button to continue to the next question
 
 def right_answer():
     bg_image = Label(root, image = right_bg)
@@ -221,7 +195,7 @@ def right_answer():
     continue_button.configure(height = 1, width = 20)
     continue_button.place(x=200, y = 600)
 
-
+# If wrong answer is selected display a 'wrong' screen with a button to continue to the next question
 
 def wrong_answer():
     bg_image = Label(root, image = wrong_bg)
@@ -233,49 +207,31 @@ def wrong_answer():
     continue_button.configure(height = 1, width = 20)
     continue_button.place(x=200, y = 600)
 
+# If Question 10 is right, add 1 to right_answers before finishing 
+
 def finish_right():
     global right_answers 
     right_answers += 1
     finish
     
-    
+# Display score on the final page with a button to play again
 def finish():
-    
+    global questions_list, question_num, right_answers
     bg_image = Label(root, image = home, text = f'You scored\n {right_answers} out of 10!!!',font = ("Hobo std",70,'bold'), bg = "white" )
     bg_image.place(relheight = 1, relwidth = 1)
     bg_image.config(compound = "center")
-    play_button = Button(root, text = "Play Again", font = ("Hobo std",30,'bold')
+    play_button = Button(root, text = " Play Again ", font = ("Hobo std",30,'bold')
                       , bg = "lightgreen", command = play_clicked)
     play_button.configure(height = 1, width = 8,)
-    play_button.place(x = 500, y = 400)
-    global questions_list, etc
+    play_button.place(x = 500, y = 550)
+
+    # Reset all variables
     questions_list = [question_1, question_2, question_3, question_4, question_5, question_6, question_7, question_8, question_9, question_10]
-    asked = []
     right_answers = 0
     question_num = 0
-    
 
+# After play has been clicked show rules and continue button to start the quiz
 
-
-'''def next_question():
-    try:
-        questions_list[question_num]
-    except(IndexError):
-        bg_image = Label(root, image = home)
-        bg_image.place(relheight = 1, relwidth = 1)'''
-
-
-
-
-
-
-   
- 
-
-
-
-
-#after play has been clicked show rules and continue button to start the quiz
 def play_clicked():
     bg_image = Label(root, image = rules_image)
     bg_image.place(relheight = 1, relwidth = 1)
@@ -284,39 +240,17 @@ def play_clicked():
     continue_button.configure(height = 1, width = 20)
     continue_button.place(x=200, y = 600)
 
-# after right or wrong screen is clicked move onto the next question
-'''def next_question():
-    while asked_question in asked < question in questions_list:
-        questions_list[1]'''
-
-    
-
-
-
-
-
-
-
-
-
-
-
-    
-# rules button on homescreen
+# Home Screen with button to 'play now'
 play_button = Button(root, text = "Play Now", font = ("Hobo std",30,'bold')
                       , bg = "lightgreen", command = play_clicked)
 play_button.configure(height = 1, width = 8,)
 play_button.place(x = 500, y = 400)
 
+# List of Questions to cycle through. Variable for total right answers and variable to move on to the next question
 
-
-
-
-
-
-
-
-
+questions_list = [question_1, question_2, question_3, question_4, question_5, question_6, question_7, question_8, question_9, question_10]
+right_answers = 0
+question_num = 0
 
 root.mainloop()
 
