@@ -14,13 +14,13 @@ root.title("Background Colour Change")
 home = PhotoImage(file=r"C:\Users\wilcee\Downloads\Earth Homescreen (1200 x 800 px) (1).png")
 bg_image = Label(root, image = home)
 bg_image.place(relheight = 1, relwidth = 1)
-rules_image= PhotoImage(file=r"C:\Users\wilcee\Downloads\RULES.png")
+rules_image= PhotoImage(file=r"C:\Users\wilcee\Downloads\RULES (1).png")
 randimage = PhotoImage(file=r"C:\Users\wilcee\Downloads\Yellow Abstract background(600 x 600 px).png")
 q_ozone = PhotoImage(file = r"C:\Users\wilcee\Downloads\Question Screen ozone(1200 x 800 px).png")
 q_g_gas = PhotoImage(file = r"C:\Users\wilcee\Downloads\Question Screen g-gas(1200 x 800 px).png")
 q_algae = PhotoImage(file = r"C:\Users\wilcee\Downloads\Question Screen algae(1200 x 800 px).png")
 q_soil = PhotoImage(file = r"C:\Users\wilcee\Downloads\Question Screen soil erosion(1200 x 800 px).png")
-q_forest = PhotoImage(file = r"C:\Users\wilcee\Downloads\Question Screen deforestation(1200 x 800 px).png")
+q_forest = PhotoImage(file = r"C:\Users\wilcee\Downloads\Question Screen Deforestation(1200 x 800 px) (1).png")
 q_develop = PhotoImage(file = r"C:\Users\wilcee\Downloads\Question Screen sustainable development(1200 x 800 px).png")
 q_energy = PhotoImage(file = r"C:\Users\wilcee\Downloads\Question Screen renewable energy(1200 x 800 px).png")
 q_bio = PhotoImage(file = r"C:\Users\wilcee\Downloads\Question Screen biodiversity(1200 x 800 px).png")
@@ -49,7 +49,6 @@ def answer_options(root, text, command_func):
     return question_button
 
 # List of all the questions
-
 def question_1():
     bg_image = Label(root, image = q_ozone)
     bg_image.place(relheight = 1, relwidth = 1)
@@ -124,17 +123,17 @@ def question_6():
     develop4 = answer_options(root, " Prioritizing short-term \n gains over long-term \n sustainability", wrong_answer)
 
     develop1.place(x= x_pos1, y= y_pos1)
-    develop2.place(x= x_pos1, y=500)
+    develop2.place(x= x_pos1, y= y_pos2)
     develop3.place(x= x_pos2, y= y_pos1)
-    develop4.place(x= x_pos2, y=500)
+    develop4.place(x= x_pos2, y= y_pos2)
 
 def question_7():
     bg_image = Label(root, image = q_energy)
     bg_image.place(relheight = 1, relwidth = 1)
-    energy1 = answer_options(root, "coal", wrong_answer)
-    energy2 = answer_options(root, "oil", wrong_answer)
-    energy3 = answer_options(root, "solar", right_answer)
-    energy4 = answer_options(root, "natural gas", wrong_answer)
+    energy1 = answer_options(root, "Coal", wrong_answer)
+    energy2 = answer_options(root, "Oil", wrong_answer)
+    energy3 = answer_options(root, "Solar", right_answer)
+    energy4 = answer_options(root, "Natural gas", wrong_answer)
 
     energy1.place(x= x_pos1, y= y_pos1)
     energy2.place(x= x_pos1, y= y_pos2)
@@ -144,10 +143,10 @@ def question_7():
 def question_8():
     bg_image = Label(root, image = q_bio)
     bg_image.place(relheight = 1, relwidth = 1)
-    bio1 = answer_options(root, "species extinction", right_answer)
-    bio2 = answer_options(root, "genetic diversity", wrong_answer)
-    bio3 = answer_options(root, "habitat fragmentation", wrong_answer)
-    bio4 = answer_options(root, "natural selection", wrong_answer)
+    bio1 = answer_options(root, "Species extinction", right_answer)
+    bio2 = answer_options(root, "Genetic diversity", wrong_answer)
+    bio3 = answer_options(root, "Habitat fragmentation", wrong_answer)
+    bio4 = answer_options(root, "Natural selection", wrong_answer)
 
     bio1.place(x= x_pos1, y= y_pos1)
     bio2.place(x= x_pos1, y= y_pos2)
@@ -160,7 +159,7 @@ def question_9():
     sealife1 = answer_options(root, " Increased oxygen \n levels", wrong_answer)
     sealife2 = answer_options(root, " Reduced plastic waste", wrong_answer)
     sealife3 = answer_options(root, " Increased marine \n bird populations", wrong_answer)
-    sealife4 = answer_options(root, "  Increased ingestion \n and entanglement", wrong_answer)
+    sealife4 = answer_options(root, "  Increased ingestion \n and entanglement", right_answer)
 
     sealife1.place(x= x_pos1, y= y_pos1)
     sealife2.place(x= x_pos1, y= y_pos2)
@@ -172,7 +171,7 @@ def question_10():
     bg_image.place(relheight = 1, relwidth = 1)
     water1 = answer_options(root, "Runoff", finish)
     water2 = answer_options(root, "Evaporation", finish)
-    water3 = answer_options(root, "infiltration", finish_right)
+    water3 = answer_options(root, "Infiltration", finish_right)
     water4 = answer_options(root, "Transpiration", finish)
 
     water1.place(x= x_pos1, y= y_pos1)
