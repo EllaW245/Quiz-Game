@@ -51,7 +51,7 @@ def answer_options(root, text, command_func):
         command=command_func)
     return question_button
 
-def place_question(x_list, y_list):
+def place_question(x_list, y_list,):
     gridpositions = [(80,400), (80,600),(420,400),(420,600)]
     random.shuffle(gridpositions)
     # add shuffled x and y positions to two separate lists
@@ -59,19 +59,20 @@ def place_question(x_list, y_list):
         position = gridpositions[i]
         x_list.append(position[0])
         y_list.append(position[1])
+    return(x_list, y_list)
    
 
 # List of all the questions
 def question_1():
     x_list = []
     y_list= []
-    ozone_list = []
+    q_list = []
     #bg_image = Label(root, image = q_ozone)
     #bg_image.place(relheight = 1, relwidth = 1)
-    ozone_list.append(answer_options(root, "Industrial pollutants \n like CFCs", right_answer))
-    ozone_list.append(answer_options(root, "Increased \n solar radiation", wrong_answer))
-    ozone_list.append(answer_options(root, "Natural variations \n in atmospheric gases", wrong_answer))
-    ozone_list.append(answer_options(root, "Deforestation", wrong_answer))
+    q_list.append(answer_options(root, "Industrial pollutants \n like CFCs", right_answer))
+    q_list.append(answer_options(root, "Increased \n solar radiation", wrong_answer))
+    q_list.append(answer_options(root, "Natural variations \n in atmospheric gases", wrong_answer))
+    q_list.append(answer_options(root, "Deforestation", wrong_answer))
 
     gridpositions = [(x_pos1,y_pos1), (x_pos1,y_pos2),(x_pos2,y_pos1),(x_pos2,y_pos2)]
     random.shuffle(gridpositions)
@@ -81,7 +82,7 @@ def question_1():
         x_list.append(position[0])
         y_list.append(position[1]) 
     for i in range(4):
-        ozone_list[i].place(x= x_list[i], y= y_list[i] )
+        q_list[i].place(x= x_list[i], y= y_list[i] )
     #ozone2.place(x= x_pos1, y= y_pos2)
     #ozone3.place(x= x_pos2, y= y_pos1)
     #ozone4.place(x= x_pos2, y= y_pos2)
@@ -89,15 +90,25 @@ def question_1():
 def question_2():
     #bg_image = Label(root, image = q_g_gas)
     #bg_image.place(relheight = 1, relwidth = 1)
-    g_gas1 = answer_options(root,"Oxygen", wrong_answer)
-    g_gas2 = answer_options(root, "Nitrogen", wrong_answer)
-    g_gas3 = answer_options(root, "Carbon Dioxide", right_answer)
-    g_gas4 = answer_options(root, "Helium", wrong_answer)
+    x_list = []
+    y_list = []
+    g_gas_list = []
 
-    g_gas1.place(x= x_pos1, y= y_pos1)
-    g_gas2.place(x= x_pos1, y= y_pos2)
-    g_gas3.place(x= x_pos2, y= y_pos1)
-    g_gas4.place(x= x_pos2, y= y_pos2)
+    g_gas_list.append(answer_options(root,"Oxygen", wrong_answer))
+    g_gas_list.append(answer_options(root, "Nitrogen", wrong_answer))
+    g_gas_list.append(answer_options(root, "Carbon Dioxide", right_answer))
+    g_gas_list.append(answer_options(root, "Helium", wrong_answer))
+
+    gridpositions = [(x_pos1,y_pos1), (x_pos1,y_pos2),(x_pos2,y_pos1),(x_pos2,y_pos2)]
+    random.shuffle(gridpositions)
+   
+    for i in range (4):
+        position = gridpositions[i]
+        x_list.append(position[0])
+        y_list.append(position[1]) 
+    for i in range(4):
+        g_gas_list[i].place(x= x_list[i], y= y_list[i] )
+
 
 def question_3():
     #bg_image = Label(root, image = q_algae)
