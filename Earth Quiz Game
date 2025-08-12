@@ -2,12 +2,10 @@
  and shows total right answers on the final screen, with the option to play again
                                                                        Ella Wilce July 2025 '''
 
-# Import tkinter to use GUI
-
+# Import tkinter to use GUI and random to shuffle answer placement
 from tkinter import *
 import random
-
-    
+   
 # Create root window 
 root = Tk()
 root.geometry("1200x800")
@@ -51,28 +49,11 @@ def answer_options(root, text, command_func):
         command=command_func)
     return question_button
 
-def place_question():
-    x_list =[]
-    y_list = []
-    x_pos1 = 80
-    x_pos2 = 420
-
-    y_pos1 = 400
-    y_pos2 = 600
-    
-    gridpositions = [(x_pos1,y_pos1), (x_pos1,y_pos2),(x_pos2,y_pos1),(x_pos2,y_pos2)]
-    random.shuffle(gridpositions)
-  
-    for i in range (4):
-        position = gridpositions[i]
-        x_list.append(position[0])
-        y_list.append(position[1]) 
-    return x_list, y_list
-  
-
 # List of all the questions
 def question_1():
-    
+
+    y_list = []
+    x_list = []
     q_list = []
     bg_image = Label(root, image = q_ozone)
     bg_image.place(relheight = 1, relwidth = 1)
@@ -81,10 +62,16 @@ def question_1():
     q_list.append(answer_options(root, "Natural variations \n in atmospheric gases", wrong_answer))
     q_list.append(answer_options(root, "Deforestation", wrong_answer))
 
-    place_question
-    print(x_list)
+# Answers are placed in a random position
+    gridpositions = [(x_pos1,y_pos1), (x_pos1,y_pos2),(x_pos2,y_pos1),(x_pos2,y_pos2)]
+    random.shuffle(gridpositions)
+  
+    for i in range (4):
+        position = gridpositions[i]
+        x_list.append(position[0])
+        y_list.append(position[1]) 
     for i in range(4):
-        q_list[i].place(x= x_list[i], y= y_list[i] )
+        q_list[i].place(x= x_list[i], y= y_list[i])
 
 def question_2():
     x_list = []
@@ -276,7 +263,6 @@ def question_10():
         q_list[i].place(x= x_list[i], y= y_list[i])
 
 # If right answer is selected display a 'right' screen with a button to continue to the next question
-
 def right_answer():
     bg_image = Label(root, image = right_bg)
     bg_image.place(relheight = 1, relwidth = 1)
@@ -291,7 +277,6 @@ def right_answer():
     continue_button.place(x=200, y = 600)
 
 # If wrong answer is selected display a 'wrong' screen with a button to continue to the next question
-
 def wrong_answer():
     bg_image = Label(root, image = wrong_bg)
     bg_image.place(relheight = 1, relwidth = 1)
@@ -302,7 +287,11 @@ def wrong_answer():
     continue_button.configure(height = 1, width = 20)
     continue_button.place(x=200, y = 600)
 
-
+# If Question 10 is right, add 1 to right_answers before finishing 
+def finish_right():
+    global right_answers 
+    right_answers += 1
+    finish()
 
 # Display score on the final page with a button to play again
 def finish():
@@ -322,14 +311,9 @@ def finish():
     # Reset all variables
     questions_list = [question_1, question_2, question_3, question_4, question_5, question_6, question_7, question_8, question_9, question_10]
     right_answers = 0
-    question_num = 0
-    
-def finish_right():
-    global right_answers
-    right_answers += 1
-    finish     
+    question_num = 0     
+  
 # After play has been clicked show rules and continue button to start the quiz
-
 def play_clicked():
     bg_image = Label(root, image = rules_image)
     bg_image.place(relheight = 1, relwidth = 1)
@@ -345,7 +329,6 @@ play_button.configure(height = 1, width = 8,)
 play_button.place(x = 500, y = 400)
 
 # List of Questions to cycle through. Variable for total right answers and variable to move on to the next question
-
 questions_list = [question_1, question_2, question_3, question_4, question_5, question_6, question_7, question_8, question_9, question_10]
 right_answers = 0
 question_num = 0
