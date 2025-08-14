@@ -1,6 +1,6 @@
 '''Quiz Game with 10 multi-choice questions that displays whether the answer was right or wrong
  and shows total right answers on the final screen, with the option to play again
-                                                                       Ella Wilce July 2025 '''
+                                                                    Ella Wilce August 2025 '''
 
 # Import tkinter to use GUI and random to shuffle answer placement
 from tkinter import *
@@ -9,7 +9,7 @@ import random
 # Create root window 
 root = Tk()
 root.geometry("1200x800")
-root.title("Background Colour Change")
+root.title("Earth Quiz Game")
 
 # Import background images
 home = PhotoImage(file=r"Earth Homescreen (1200 x 800 px) (1).png")
@@ -30,13 +30,6 @@ q_bio = PhotoImage(file = r"Question Screen biodiversity(1200 x 800 px).png")
 q_sealife = PhotoImage(file = r"Question Screen sea pollution(1200 x 800 px).png")
 q_water = PhotoImage(file = r"Question Screen groundwater(1200 x 800 px).png")
 
-# Set the values for the x and y positions of the four answer option buttons
-x_pos1 = 80
-x_pos2 = 420
-
-y_pos1 = 400
-y_pos2 = 600
-
 # Function to streamline the questions. Establishes everything except root, text, command
 def answer_options(root, text, command_func):
     question_button = Button(
@@ -49,11 +42,29 @@ def answer_options(root, text, command_func):
         command=command_func)
     return question_button
 
+# Function to randomly assign a position to each of the four answer options
+def place_answer():
+    x_list = []
+    y_list = []
+
+    # Set the values for the x and y positions of the four answer option buttons
+    x_pos1 = 80
+    x_pos2 = 420
+    y_pos1 = 400
+    y_pos2 = 600
+    
+    # shuffle and assign positions
+    gridpositions = [(x_pos1,y_pos1), (x_pos1,y_pos2),(x_pos2,y_pos1),(x_pos2,y_pos2)]
+    random.shuffle(gridpositions)
+  
+    for i in range (4):
+        position = gridpositions[i]
+        x_list.append(position[0])
+        y_list.append(position[1]) 
+    return(x_list, y_list)
+
 # List of all the questions
 def question_1():
-
-    y_list = []
-    x_list = []
     q_list = []
     bg_image = Label(root, image = q_ozone)
     bg_image.place(relheight = 1, relwidth = 1)
@@ -62,20 +73,12 @@ def question_1():
     q_list.append(answer_options(root, "Natural variations \n in atmospheric gases", wrong_answer))
     q_list.append(answer_options(root, "Deforestation", wrong_answer))
 
-# Answers are placed in a random position
-    gridpositions = [(x_pos1,y_pos1), (x_pos1,y_pos2),(x_pos2,y_pos1),(x_pos2,y_pos2)]
-    random.shuffle(gridpositions)
-  
-    for i in range (4):
-        position = gridpositions[i]
-        x_list.append(position[0])
-        y_list.append(position[1]) 
+# Takes random positions from place_answer function and assigns one to each question
+    x_list, y_list = place_answer()
     for i in range(4):
         q_list[i].place(x= x_list[i], y= y_list[i])
 
 def question_2():
-    x_list = []
-    y_list= []
     q_list = []
     bg_image = Label(root, image = q_g_gas)
     bg_image.place(relheight = 1, relwidth = 1)
@@ -84,13 +87,7 @@ def question_2():
     q_list.append(answer_options(root,"Oxygen", wrong_answer))
     q_list.append(answer_options(root, "Helium", wrong_answer))
 
-    gridpositions = [(x_pos1,y_pos1), (x_pos1,y_pos2),(x_pos2,y_pos1),(x_pos2,y_pos2)]
-    random.shuffle(gridpositions)
-  
-    for i in range (4):
-        position = gridpositions[i]
-        x_list.append(position[0])
-        y_list.append(position[1]) 
+    x_list, y_list = place_answer()
     for i in range(4):
         q_list[i].place(x= x_list[i], y= y_list[i])
 
@@ -105,13 +102,7 @@ def question_3():
     q_list.append(answer_options(root,"Acidification", wrong_answer))
     q_list.append(answer_options(root, "Desertification", wrong_answer))
 
-    gridpositions = [(x_pos1,y_pos1), (x_pos1,y_pos2),(x_pos2,y_pos1),(x_pos2,y_pos2)]
-    random.shuffle(gridpositions)
-  
-    for i in range (4):
-        position = gridpositions[i]
-        x_list.append(position[0])
-        y_list.append(position[1]) 
+    x_list, y_list = place_answer()
     for i in range(4):
         q_list[i].place(x= x_list[i], y= y_list[i])
 
@@ -126,13 +117,7 @@ def question_4():
     q_list.append(answer_options(root,"Excess water", wrong_answer))
     q_list.append(answer_options(root, "Crop Rotation", wrong_answer))
 
-    gridpositions = [(x_pos1,y_pos1), (x_pos1,y_pos2),(x_pos2,y_pos1),(x_pos2,y_pos2)]
-    random.shuffle(gridpositions)
-  
-    for i in range (4):
-        position = gridpositions[i]
-        x_list.append(position[0])
-        y_list.append(position[1]) 
+    x_list, y_list = place_answer()
     for i in range(4):
         q_list[i].place(x= x_list[i], y= y_list[i])
 
@@ -147,13 +132,7 @@ def question_5():
     q_list.append(answer_options(root, "Increased Biodiversity", wrong_answer))
     q_list.append(answer_options(root, "Increased greenhouse \n gas emissions", wrong_answer))
 
-    gridpositions = [(x_pos1,y_pos1), (x_pos1,y_pos2),(x_pos2,y_pos1),(x_pos2,y_pos2)]
-    random.shuffle(gridpositions)
-  
-    for i in range (4):
-        position = gridpositions[i]
-        x_list.append(position[0])
-        y_list.append(position[1]) 
+    x_list, y_list = place_answer()
     for i in range(4):
         q_list[i].place(x= x_list[i], y= y_list[i])
 
@@ -168,13 +147,7 @@ def question_6():
     q_list.append(answer_options(root, "Ignoring \n environmental concerns", wrong_answer))
     q_list.append(answer_options(root, "Prioritizing short-term \n gains over long-term \n sustainability", wrong_answer))
 
-    gridpositions = [(x_pos1,y_pos1), (x_pos1,y_pos2),(x_pos2,y_pos1),(x_pos2,y_pos2)]
-    random.shuffle(gridpositions)
-  
-    for i in range (4):
-        position = gridpositions[i]
-        x_list.append(position[0])
-        y_list.append(position[1]) 
+    x_list, y_list = place_answer()
     for i in range(4):
         q_list[i].place(x= x_list[i], y= y_list[i])
   
@@ -189,13 +162,7 @@ def question_7():
     q_list.append(answer_options(root, "Oil", wrong_answer))
     q_list.append(answer_options(root, "Natural Gas", wrong_answer))
 
-    gridpositions = [(x_pos1,y_pos1), (x_pos1,y_pos2),(x_pos2,y_pos1),(x_pos2,y_pos2)]
-    random.shuffle(gridpositions)
-  
-    for i in range (4):
-        position = gridpositions[i]
-        x_list.append(position[0])
-        y_list.append(position[1]) 
+    x_list, y_list = place_answer()
     for i in range(4):
         q_list[i].place(x= x_list[i], y= y_list[i])
 
@@ -210,13 +177,7 @@ def question_8():
     q_list.append(answer_options(root, "Habitat fragmentation", wrong_answer))
     q_list.append(answer_options(root, "Natural selection", wrong_answer))
 
-    gridpositions = [(x_pos1,y_pos1), (x_pos1,y_pos2),(x_pos2,y_pos1),(x_pos2,y_pos2)]
-    random.shuffle(gridpositions)
-  
-    for i in range (4):
-        position = gridpositions[i]
-        x_list.append(position[0])
-        y_list.append(position[1]) 
+    x_list, y_list = place_answer()
     for i in range(4):
         q_list[i].place(x= x_list[i], y= y_list[i])
 
@@ -231,13 +192,7 @@ def question_9():
     q_list.append(answer_options(root, "Increased oxygen \n levels", wrong_answer))
     q_list.append(answer_options(root, "Increased marine \n bird populations", wrong_answer))
 
-    gridpositions = [(x_pos1,y_pos1), (x_pos1,y_pos2),(x_pos2,y_pos1),(x_pos2,y_pos2)]
-    random.shuffle(gridpositions)
-  
-    for i in range (4):
-        position = gridpositions[i]
-        x_list.append(position[0])
-        y_list.append(position[1]) 
+    x_list, y_list = place_answer()
     for i in range(4):
         q_list[i].place(x= x_list[i], y= y_list[i])
 
@@ -252,13 +207,7 @@ def question_10():
     q_list.append(answer_options(root, "Runoff", finish))
     q_list.append(answer_options(root, "Transpiration", finish))
 
-    gridpositions = [(x_pos1,y_pos1), (x_pos1,y_pos2),(x_pos2,y_pos1),(x_pos2,y_pos2)]
-    random.shuffle(gridpositions)
-  
-    for i in range (4):
-        position = gridpositions[i]
-        x_list.append(position[0])
-        y_list.append(position[1]) 
+    x_list, y_list = place_answer()
     for i in range(4):
         q_list[i].place(x= x_list[i], y= y_list[i])
 
